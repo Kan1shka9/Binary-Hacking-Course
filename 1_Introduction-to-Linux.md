@@ -4,13 +4,13 @@
 man ls
 ```
 
-![](images/1.png)
+![](images/1/1.png)
 
 ```
 h
 ```
 
-![](images/2.png)
+![](images/1/2.png)
 
 ```sh
 root@kali:~# echo Go down this rabbit hole > rabbit
@@ -27,7 +27,7 @@ root@kali:~#
 man ascii
 ```
 
-![](images/3.png)
+![](images/1/3.png)
 
 **Command** | **Description**
 :-------: | :------------:
