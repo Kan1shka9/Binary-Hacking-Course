@@ -1,4 +1,4 @@
-#### Introduction to Linux
+#### 1. Introduction to Linux
 
 ```
 man ls
