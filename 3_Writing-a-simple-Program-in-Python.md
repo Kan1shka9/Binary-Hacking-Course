@@ -92,3 +92,7 @@ root@kali:~/lo# ./matrix.py "kanishka and executable"
 Knock, Knock, kanishka and executable
 root@kali:~/lo#
 ```
+
+###### Reference
+
+- [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))
