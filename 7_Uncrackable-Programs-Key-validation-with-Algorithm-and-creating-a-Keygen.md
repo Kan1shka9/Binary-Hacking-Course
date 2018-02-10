@@ -344,3 +344,5 @@ Checking License: eDMn4219QOa_
 Access Granted!
 l64@l64-virtual-machine:~$
 ```
+
+![](images/7/1.png)
