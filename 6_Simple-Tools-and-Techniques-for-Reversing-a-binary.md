@@ -1,14 +1,14 @@
 #### 6. Simple Tools and Techniques for Reversing a binary
 
-- [vim]()
-- [file]()
-- [strings]()
-- [hexdump]()
-- [objdump]()
-- [strace]()
-- [ltrace]()
-- [Hopper]()
-- [radare2]()
+- [vim](#vim)
+- [file](#file)
+- [strings](#strings)
+- [hexdump](#hexdump)
+- [objdump](#objdump)
+- [strace](#strace)
+- [ltrace](#ltrace)
+- [Hopper](#hopper)
+- [radare2](#radare2)
 	- Setup
 	- Analyze functions list
 	- Disassembly
