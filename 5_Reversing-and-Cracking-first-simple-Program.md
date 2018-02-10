@@ -77,13 +77,13 @@ End of assembler dump.
 (gdb)
 ```
 
-**Address **|**Call Functions**|**Strings **
+**Address**|**Call Functions**|**Strings**
 :-----:|:-----:|:-----:
 0x00000000004005ea <+45>:  | call   `0x400490 <printf@plt>` | Checking License
 0x0000000000400602 <+69>:  | call   `0x4004b0 <strcmp@plt>` | strcmp
-0x0000000000400610 <+83>:  | call   `0x400480 <puts@plt>`   | Access Granted!
-0x000000000040061c <+95>:  | call   `0x400480 <puts@plt>`   | WRONG!
-0x0000000000400628 <+107>: | call   `0x400480 <puts@plt>`   | Usage: <key>   
+0x0000000000400610 <+83>:  |call   `0x400480 <puts@plt>`   | Access Granted!
+0x000000000040061c <+95>:  |call   `0x400480 <puts@plt>`   | WRONG!
+0x0000000000400628 <+107>: |call   `0x400480 <puts@plt>`   | Usage: <key>   
 
 ![](images/5/1.png)
 
