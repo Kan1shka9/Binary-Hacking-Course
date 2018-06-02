@@ -1,6 +1,6 @@
 #### 8. Uncrackable Program? Finding a Parser Differential in loading ELF
 
-**`Parser Differential Attack`**
+[**`Parser Differential Attack`**](#parser-differential-attack)
 
 ``fuzz.py``
 
