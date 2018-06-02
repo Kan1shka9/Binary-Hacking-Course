@@ -160,3 +160,18 @@ man 3 printf
 ```
 
 ![](images/2/1.png)
+
+```sh
+u64@vm:~$ ./matrix
+Usage: ./matrix <name>
+u64@vm:~$
+u64@vm:~$ echo $?
+1
+u64@vm:~$
+u64@vm:~$ ./matrix Kanishka
+Knock, Knock, Kanishka
+u64@vm:~$
+u64@vm:~$ echo $?
+0
+u64@vm:~$
+```
