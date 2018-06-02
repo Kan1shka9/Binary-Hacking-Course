@@ -34,6 +34,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ``matrix.py``
 
+```
+:set expandtab shiftwidth=4 softtabstop=4
+```
+
 ```python
 #!/usr/bin/python
 
