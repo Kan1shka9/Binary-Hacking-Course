@@ -218,6 +218,147 @@ Access Granted!
 [0x7fa278119fd8]>
 ```
 
+- Stepping through
+
+```sh
+u64@vm:~/lo$ /home/u64/bin/r2 ./license_2
+ -- R2 loves everyone, even Java coders, but less than others
+[0x08048370]> aaa
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze function calls (aac)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Use -AA or aaaa to perform additional experimental analysis.
+[x] Constructing a function name for fcn.* and sym.func.* functions (aan)
+[0x08048370]> afl
+0x080482ec    3 35           sym._init
+0x08048320    1 6            sym.imp.printf
+0x08048330    1 6            sym.imp.puts
+0x08048340    1 6            sym.imp.strlen
+0x08048350    1 6            sym.imp.__libc_start_main
+0x08048360    1 6            sub.__gmon_start_360
+0x08048370    1 33           entry0
+0x080483a0    1 4            sym.__x86.get_pc_thunk.bx
+0x080483b0    4 43           sym.deregister_tm_clones
+0x080483e0    4 53           sym.register_tm_clones
+0x08048420    3 30           sym.__do_global_dtors_aux
+0x08048440    4 43   -> 40   entry1.init
+0x0804846b    9 201          main
+0x08048540    4 93           sym.__libc_csu_init
+0x080485a0    1 2            sym.__libc_csu_fini
+0x080485a4    1 20           sym._fini
+[0x08048370]> s sym.main
+[0x0804846b]> pdf
+/ (fcn) main 201
+|   main (int arg_4h);
+|           ; var int local_10h @ ebp-0x10
+|           ; var int local_ch @ ebp-0xc
+|           ; var int local_8h @ ebp-0x8
+|           ; arg int arg_4h @ esp+0x4
+|           ; DATA XREF from 0x08048387 (entry0)
+|           0x0804846b      8d4c2404       lea ecx, [arg_4h]           ; 4
+|           0x0804846f      83e4f0         and esp, 0xfffffff0
+|           0x08048472      ff71fc         push dword [ecx - 4]
+|           0x08048475      55             push ebp
+|           0x08048476      89e5           mov ebp, esp
+|           0x08048478      53             push ebx
+|           0x08048479      51             push ecx
+|           0x0804847a      83ec10         sub esp, 0x10
+|           0x0804847d      89cb           mov ebx, ecx
+|           0x0804847f      833b02         cmp dword [ebx], 2          ; [0x2:4]=-1 ; 2
+|       ,=< 0x08048482      0f858d000000   jne 0x8048515
+|       |   0x08048488      8b4304         mov eax, dword [ebx + 4]    ; [0x4:4]=-1 ; 4
+|       |   0x0804848b      83c004         add eax, 4
+|       |   0x0804848e      8b00           mov eax, dword [eax]
+|       |   0x08048490      83ec08         sub esp, 8
+|       |   0x08048493      50             push eax
+|       |   0x08048494      68c0850408     push str.Checking_License:__s ; 0x80485c0 ; "Checking License: %s\n"
+|       |   0x08048499      e882feffff     call sym.imp.printf         ; int printf(const char *format)
+|       |   0x0804849e      83c410         add esp, 0x10
+|       |   0x080484a1      c745f0000000.  mov dword [local_10h], 0
+|       |   0x080484a8      c745f4000000.  mov dword [local_ch], 0
+|      ,==< 0x080484af      eb1a           jmp 0x80484cb
+|      ||   ; CODE XREF from 0x080484e6 (main)
+|     .---> 0x080484b1      8b4304         mov eax, dword [ebx + 4]    ; [0x4:4]=-1 ; 4
+|     :||   0x080484b4      83c004         add eax, 4
+|     :||   0x080484b7      8b10           mov edx, dword [eax]
+|     :||   0x080484b9      8b45f4         mov eax, dword [local_ch]
+|     :||   0x080484bc      01d0           add eax, edx
+|     :||   0x080484be      0fb600         movzx eax, byte [eax]
+|     :||   0x080484c1      0fbec0         movsx eax, al
+|     :||   0x080484c4      0145f0         add dword [local_10h], eax
+|     :||   0x080484c7      8345f401       add dword [local_ch], 1
+|     :||   ; CODE XREF from 0x080484af (main)
+|     :`--> 0x080484cb      8b4304         mov eax, dword [ebx + 4]    ; [0x4:4]=-1 ; 4
+|     : |   0x080484ce      83c004         add eax, 4
+|     : |   0x080484d1      8b00           mov eax, dword [eax]
+|     : |   0x080484d3      83ec0c         sub esp, 0xc
+|     : |   0x080484d6      50             push eax
+|     : |   0x080484d7      e864feffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+|     : |   0x080484dc      83c410         add esp, 0x10
+|     : |   0x080484df      89c2           mov edx, eax
+|     : |   0x080484e1      8b45f4         mov eax, dword [local_ch]
+|     : |   0x080484e4      39c2           cmp edx, eax
+|     `===< 0x080484e6      77c9           ja 0x80484b1
+|       |   0x080484e8      817df0940300.  cmp dword [local_10h], 0x394 ; [0x394:4]=-1 ; 916
+|      ,==< 0x080484ef      7512           jne 0x8048503
+|      ||   0x080484f1      83ec0c         sub esp, 0xc
+|      ||   0x080484f4      68d6850408     push str.Access_Granted     ; 0x80485d6 ; "Access Granted!"
+|      ||   0x080484f9      e832feffff     call sym.imp.puts           ; int puts(const char *s)
+|      ||   0x080484fe      83c410         add esp, 0x10
+|     ,===< 0x08048501      eb22           jmp 0x8048525
+|     |||   ; CODE XREF from 0x080484ef (main)
+|     |`--> 0x08048503      83ec0c         sub esp, 0xc
+|     | |   0x08048506      68e6850408     push str.WRONG              ; 0x80485e6 ; "WRONG!"
+|     | |   0x0804850b      e820feffff     call sym.imp.puts           ; int puts(const char *s)
+|     | |   0x08048510      83c410         add esp, 0x10
+|     |,==< 0x08048513      eb10           jmp 0x8048525
+|     |||   ; CODE XREF from 0x08048482 (main)
+|     ||`-> 0x08048515      83ec0c         sub esp, 0xc
+|     ||    0x08048518      68ed850408     push str.Usage:__key        ; 0x80485ed ; "Usage: <key>"
+|     ||    0x0804851d      e80efeffff     call sym.imp.puts           ; int puts(const char *s)
+|     ||    0x08048522      83c410         add esp, 0x10
+|     ||    ; CODE XREF from 0x08048501 (main)
+|     ||    ; CODE XREF from 0x08048513 (main)
+|     ``--> 0x08048525      b800000000     mov eax, 0
+|           0x0804852a      8d65f8         lea esp, [local_8h]
+|           0x0804852d      59             pop ecx
+|           0x0804852e      5b             pop ebx
+|           0x0804852f      5d             pop ebp
+|           0x08048530      8d61fc         lea esp, [ecx - 4]
+\           0x08048533      c3             ret
+[0x0804846b]> VV
+```
+
+![](images/7/2.png)
+
+```
+p
+```
+
+![](images/7/3.png)
+
+![](images/7/4.png)
+
+![](images/7/5.png)
+
+![](images/7/6.png)
+
+![](images/7/7.png)
+
+![](images/7/8.png)
+
+![](images/7/9.png)
+
+![](images/7/10.png)
+
+![](images/7/11.png)
+
+![](images/7/12.png)
+
+![](images/7/13.png)
+
+![](images/7/14.png)
+
 - Keygen
 
 ``keygen.py``
