@@ -64,21 +64,18 @@ Ctrl + W + {H/J/K/L}
 ![](images/3/2.png)
 
 ```sh
-root@kali:~/lo# python matrix.py
-Traceback (most recent call last):
-  File "matrix.py", line 6, in <module>
-    sys.stderr.write("Usage : {0} <name>\n".format(sys.arv[0]))
-AttributeError: 'module' object has no attribute 'arv'
-root@kali:~/lo#
+u64@vm:~$ python matrix.py
+Usage : matrix.py <name>
+u64@vm:~$
 ```
 
 ```sh
-root@kali:~/lo# python matrix.py kanishka
-Knock, Knock, kanishka
-root@kali:~/lo#
-root@kali:~/lo# python matrix.py "kanishka and Someone else"
+u64@vm:~$ python matrix.py Kanishka
+Knock, Knock, Kanishka
+u64@vm:~$
+u64@vm:~$ python matrix.py "kanishka and Someone else"
 Knock, Knock, kanishka and Someone else
-root@kali:~/lo#
+u64@vm:~$
 ```
 
 ```sh
