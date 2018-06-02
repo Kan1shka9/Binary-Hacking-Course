@@ -1485,7 +1485,7 @@ Prefix with number to repeat command N times (f.ex: 3x)
 
 ![](images/6/22.png)
 
-- Using radare2 to bebug like gdb
+- Using radare2 to debug like gdb
 
 ```sh
 l64@l64-virtual-machine:~$ r2 -d license_1
