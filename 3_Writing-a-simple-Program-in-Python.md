@@ -53,6 +53,12 @@ else:
 :!python matrix.py
 ```
 
+Move across panes
+
+```
+Ctrl + W + {H/J/K/L}
+```
+
 ![](images/3/1.png)
 
 ![](images/3/2.png)
