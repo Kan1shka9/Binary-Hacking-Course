@@ -1096,6 +1096,8 @@ gs             0x0	0
 
 ###### strace
 
+- system call tracer
+
 ```sh
 l64@l64-virtual-machine:~$ strace ./license_1
 execve("./license_1", ["./license_1"], [/* 22 vars */]) = 0
@@ -1206,6 +1208,8 @@ l64@l64-virtual-machine:~$
 ```
 
 ###### ltrace
+
+- library call tracer
 
 ```sh
 l64@l64-virtual-machine:~$ ltrace ./license_1
