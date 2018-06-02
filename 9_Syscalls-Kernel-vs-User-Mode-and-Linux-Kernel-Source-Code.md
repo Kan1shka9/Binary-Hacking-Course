@@ -4,7 +4,7 @@
 l64@l64-virtual-machine:~$ man syscalls
 ```
 
-![](images/8/1.png)
+![](images/9/1.png)
 
 ```sh
 l64@l64-virtual-machine:~$ strace ./license_2 AAAA
@@ -47,7 +47,7 @@ l64@l64-virtual-machine:~$
 l64@l64-virtual-machine:~$ man 2 write
 ```
 
-![](images/8/2.png)
+![](images/9/2.png)
 
 ```
 ssize_t write(int fd, const void *buf, size_t count);
@@ -132,7 +132,9 @@ hit breakpoint at: 5568688f3664
 [0x5568688f364a]> V!
 ```
 
-![](images/8/3.png)
+![](images/9/3.png)
+
+![](images/9/4.png)
 
 ###### Reference
 
