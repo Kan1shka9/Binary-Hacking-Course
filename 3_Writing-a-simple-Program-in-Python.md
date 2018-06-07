@@ -57,6 +57,8 @@ else:
 :!python matrix.py
 ```
 
+![](images/3/2.png)
+
 Move across panes
 
 ```
@@ -64,8 +66,6 @@ Ctrl + W + {H/J/K/L}
 ```
 
 ![](images/3/1.png)
-
-![](images/3/2.png)
 
 ```sh
 u64@vm:~$ python matrix.py
