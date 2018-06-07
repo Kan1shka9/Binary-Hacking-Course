@@ -53,169 +53,174 @@ l64@l64-virtual-machine:~$
 ```
 
 ```sh
-l64@l64-virtual-machine:~$ r2 license_2
- -- We feed trolls
-[0x004004d0]> aaa
+m64@vm ~ $ r2 ./licence_2
+ -- I thought we were friends. :_
+[0x004004c0]> aaa
 [x] Analyze all flags starting with sym. and entry0 (aa)
-[x] Analyze len bytes of instructions for references (aar)
 [x] Analyze function calls (aac)
+[x] Analyze len bytes of instructions for references (aar)
 [x] Use -AA or aaaa to perform additional experimental analysis.
 [x] Constructing a function name for fcn.* and sym.func.* functions (aan)
-[0x004004d0]> s main
-[0x004005bd]> pdf
-            ;-- main:
+[0x004004c0]> afl
+0x00400438    3 26           sym._init
+0x00400470    1 6            sym.imp.puts
+0x00400480    1 6            sym.imp.strlen
+0x00400490    1 6            sym.imp.printf
+0x004004a0    1 6            sym.imp.__libc_start_main
+0x004004b0    1 6            sub.__gmon_start_4b0
+0x004004c0    1 41           entry0
+0x004004f0    4 50   -> 41   sym.deregister_tm_clones
+0x00400530    3 53           sym.register_tm_clones
+0x00400570    3 28           sym.__do_global_dtors_aux
+0x00400590    4 38   -> 35   entry1.init
+0x004005b6    9 188          main
+0x00400680    4 101          sym.__libc_csu_init
+0x004006f0    1 2            sym.__libc_csu_fini
+0x004006f4    1 9            sym._fini
+[0x004004c0]> s main
+[0x004005b6]> pdf
 / (fcn) main 188
 |   main ();
 |           ; var int local_30h @ rbp-0x30
 |           ; var int local_24h @ rbp-0x24
 |           ; var int local_18h @ rbp-0x18
 |           ; var int local_14h @ rbp-0x14
-|              ; DATA XREF from 0x004004ed (entry0)
-|           0x004005bd      55             push rbp
-|           0x004005be      4889e5         mov rbp, rsp
-|           0x004005c1      53             push rbx
-|           0x004005c2      4883ec28       sub rsp, 0x28               ; '('
-|           0x004005c6      897ddc         mov dword [local_24h], edi
-|           0x004005c9      488975d0       mov qword [local_30h], rsi
-|           0x004005cd      837ddc02       cmp dword [local_24h], 2    ; [0x2:4]=-1 ; 2
-|       ,=< 0x004005d1      0f858c000000   jne 0x400663
-|       |   0x004005d7      488b45d0       mov rax, qword [local_30h]
-|       |   0x004005db      4883c008       add rax, 8
-|       |   0x004005df      488b00         mov rax, qword [rax]
-|       |   0x004005e2      4889c6         mov rsi, rax
-|       |   0x004005e5      bf04074000     mov edi, str.Checking_License:__s ; 0x400704 ; "Checking License: %s\n"
-|       |   0x004005ea      b800000000     mov eax, 0
-|       |   0x004005ef      e8acfeffff     call sym.imp.printf         ; int printf(const char *format)
-|       |   0x004005f4      c745e8000000.  mov dword [local_18h], 0
-|       |   0x004005fb      c745ec000000.  mov dword [local_14h], 0
-|      ,==< 0x00400602      eb20           jmp 0x400624
-|      ||      ; JMP XREF from 0x00400640 (main)
-|     .---> 0x00400604      488b45d0       mov rax, qword [local_30h]
-|     :||   0x00400608      4883c008       add rax, 8
-|     :||   0x0040060c      488b10         mov rdx, qword [rax]
-|     :||   0x0040060f      8b45ec         mov eax, dword [local_14h]
-|     :||   0x00400612      4898           cdqe
-|     :||   0x00400614      4801d0         add rax, rdx                ; '('
-|     :||   0x00400617      0fb600         movzx eax, byte [rax]
-|     :||   0x0040061a      0fbec0         movsx eax, al
-|     :||   0x0040061d      0145e8         add dword [local_18h], eax
-|     :||   0x00400620      8345ec01       add dword [local_14h], 1
-|     :||      ; JMP XREF from 0x00400602 (main)
-|     :`--> 0x00400624      8b45ec         mov eax, dword [local_14h]
-|     : |   0x00400627      4863d8         movsxd rbx, eax
-|     : |   0x0040062a      488b45d0       mov rax, qword [local_30h]
-|     : |   0x0040062e      4883c008       add rax, 8
-|     : |   0x00400632      488b00         mov rax, qword [rax]
-|     : |   0x00400635      4889c7         mov rdi, rax
-|     : |   0x00400638      e853feffff     call sym.imp.strlen         ; size_t strlen(const char *s)
-|     : |   0x0040063d      4839c3         cmp rbx, rax
-|     `===< 0x00400640      72c2           jb 0x400604
-|       |   0x00400642      817de8940300.  cmp dword [local_18h], 0x394 ; [0x394:4]=-1 ; 916
-|      ,==< 0x00400649      750c           jne 0x400657
-|      ||   0x0040064b      bf1a074000     mov edi, str.Access_Granted ; 0x40071a ; "Access Granted!"
-|      ||   0x00400650      e82bfeffff     call sym.imp.puts           ; int puts(const char *s)
-|     ,===< 0x00400655      eb16           jmp 0x40066d
-|     |||      ; JMP XREF from 0x00400649 (main)
-|     |`--> 0x00400657      bf2a074000     mov edi, str.WRONG          ; 0x40072a ; "WRONG!"
-|     | |   0x0040065c      e81ffeffff     call sym.imp.puts           ; int puts(const char *s)
-|     |,==< 0x00400661      eb0a           jmp 0x40066d
-|     |||      ; JMP XREF from 0x004005d1 (main)
-|     ||`-> 0x00400663      bf31074000     mov edi, str.Usage:__key    ; 0x400731 ; "Usage: <key>"
-|     ||    0x00400668      e813feffff     call sym.imp.puts           ; int puts(const char *s)
-|     ||       ; JMP XREF from 0x00400661 (main)
-|     ||       ; JMP XREF from 0x00400655 (main)
-|     ``--> 0x0040066d      b800000000     mov eax, 0
-|           0x00400672      4883c428       add rsp, 0x28               ; '('
-|           0x00400676      5b             pop rbx
-|           0x00400677      5d             pop rbp
-\           0x00400678      c3             ret
-[0x004005bd]>
-```
-
-```sh
-[0x004005bd]> ood AAA-WRONG_KEY
-Process with PID 46959 started...
-File dbg:///home/l64/license_2  AAA-WRONG_KEY reopened in read-write mode
-= attach 46959 46959
-46959
-[0x7f54a54acea0]> dc
-Checking License: AAA-WRONG_KEY
-WRONG!
-[0x7f54a51a4fd8]>
-```
-
-```sh
-[0x004005bd]> db 0x00400649
-Cannot place a breakpoint on 0x00400649 unmapped memory. See e? dbg.bpinmaps
-[0x004005bd]> ood
-Process with PID 46989 started...
-File dbg:///home/l64/license_2  reopened in read-write mode
-= attach 46989 46989
-46989
-[0x7fe8ede20ea0]> dc
-Usage: <key>
-[0x7fe8edb18fd8]>
+|           ; DATA XREF from 0x004004dd (entry0)
+|           0x004005b6      55             push rbp
+|           0x004005b7      4889e5         mov rbp, rsp
+|           0x004005ba      53             push rbx
+|           0x004005bb      4883ec28       sub rsp, 0x28               ; '('
+|           0x004005bf      897ddc         mov dword [local_24h], edi
+|           0x004005c2      488975d0       mov qword [local_30h], rsi
+|           0x004005c6      837ddc02       cmp dword [local_24h], 2    ; [0x2:4]=-1 ; 2
+|       ,=< 0x004005ca      0f858c000000   jne 0x40065c
+|       |   0x004005d0      488b45d0       mov rax, qword [local_30h]
+|       |   0x004005d4      4883c008       add rax, 8
+|       |   0x004005d8      488b00         mov rax, qword [rax]
+|       |   0x004005db      4889c6         mov rsi, rax
+|       |   0x004005de      bf04074000     mov edi, str.Checking_License:__s ; 0x400704 ; "Checking License: %s\n"
+|       |   0x004005e3      b800000000     mov eax, 0
+|       |   0x004005e8      e8a3feffff     call sym.imp.printf         ; int printf(const char *format)
+|       |   0x004005ed      c745e8000000.  mov dword [local_18h], 0
+|       |   0x004005f4      c745ec000000.  mov dword [local_14h], 0
+|      ,==< 0x004005fb      eb20           jmp 0x40061d
+|      ||   ; CODE XREF from 0x00400639 (main)
+|     .---> 0x004005fd      488b45d0       mov rax, qword [local_30h]
+|     :||   0x00400601      4883c008       add rax, 8
+|     :||   0x00400605      488b10         mov rdx, qword [rax]
+|     :||   0x00400608      8b45ec         mov eax, dword [local_14h]
+|     :||   0x0040060b      4898           cdqe
+|     :||   0x0040060d      4801d0         add rax, rdx                ; '('
+|     :||   0x00400610      0fb600         movzx eax, byte [rax]
+|     :||   0x00400613      0fbec0         movsx eax, al
+|     :||   0x00400616      0145e8         add dword [local_18h], eax
+|     :||   0x00400619      8345ec01       add dword [local_14h], 1
+|     :||   ; CODE XREF from 0x004005fb (main)
+|     :`--> 0x0040061d      8b45ec         mov eax, dword [local_14h]
+|     : |   0x00400620      4863d8         movsxd rbx, eax
+|     : |   0x00400623      488b45d0       mov rax, qword [local_30h]
+|     : |   0x00400627      4883c008       add rax, 8
+|     : |   0x0040062b      488b00         mov rax, qword [rax]
+|     : |   0x0040062e      4889c7         mov rdi, rax
+|     : |   0x00400631      e84afeffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+|     : |   0x00400636      4839c3         cmp rbx, rax
+|     `===< 0x00400639      72c2           jb 0x4005fd
+|       |   0x0040063b      817de8940300.  cmp dword [local_18h], 0x394 ; [0x394:4]=-1 ; 916
+|      ,==< 0x00400642      750c           jne 0x400650
+|      ||   0x00400644      bf1a074000     mov edi, str.Access_Granted ; 0x40071a ; "Access Granted!"
+|      ||   0x00400649      e822feffff     call sym.imp.puts           ; int puts(const char *s)
+|     ,===< 0x0040064e      eb16           jmp 0x400666
+|     |||   ; CODE XREF from 0x00400642 (main)
+|     |`--> 0x00400650      bf2a074000     mov edi, str.WRONG          ; 0x40072a ; "WRONG!"
+|     | |   0x00400655      e816feffff     call sym.imp.puts           ; int puts(const char *s)
+|     |,==< 0x0040065a      eb0a           jmp 0x400666
+|     |||   ; CODE XREF from 0x004005ca (main)
+|     ||`-> 0x0040065c      bf31074000     mov edi, str.Usage:__key    ; 0x400731 ; "Usage: <key>"
+|     ||    0x00400661      e80afeffff     call sym.imp.puts           ; int puts(const char *s)
+|     ||    ; CODE XREF from 0x0040064e (main)
+|     ||    ; CODE XREF from 0x0040065a (main)
+|     ``--> 0x00400666      b800000000     mov eax, 0
+|           0x0040066b      4883c428       add rsp, 0x28               ; '('
+|           0x0040066f      5b             pop rbx
+|           0x00400670      5d             pop rbp
+\           0x00400671      c3             ret
+[0x004005b6]>
 ```
 
 - Patching the jmp
 
 ```sh
-[0x004005bd]> db 0x00400649
-Cannot place a breakpoint on 0x00400649 unmapped memory. See e? dbg.bpinmaps
-[0x004005bd]> ood AAA-WRONG_KEY
-Process with PID 47029 started...
-File dbg:///home/l64/license_2  AAA-WRONG_KEY reopened in read-write mode
-= attach 47029 47029
-47029
-[0x7fa278421ea0]> db 0x00400649
-[0x7fa278421ea0]> dr
-rax = 0x00000000
-rbx = 0x00000000
-rcx = 0x00000000
-rdx = 0x00000000
+[0x004005b6]> ood AAA-BBB-CCC
+Process with PID 79804 started...
+File dbg:///home/m64/licence_2  AAA-BBB-CCC reopened in read-write mode
+= attach 79804 79804
+79804
+[0x7f285e399c30]> db 0x00400642
+[0x7f285e399c30]> ood
+Wait event received by different pid 79804
+Process with PID 79806 started...
+File dbg:///home/m64/licence_2  reopened in read-write mode
+= attach 79806 79806
+79806
+[0x7fc0b8cb5c30]> dc
+Usage: <key>
+[0x7fc0b89b7748]> ood AAA-BBB-CCC
+Wait event received by different pid 79804
+Wait event received by different pid 79806
+Process with PID 79808 started...
+File dbg:///home/m64/licence_2  AAA-BBB-CCC reopened in read-write mode
+= attach 79808 79808
+Unable to find filedescriptor 3
+Unable to find filedescriptor 3
+79808
+[0x7f6a79318c30]> dc
+Checking License: AAA-BBB-CCC
+hit breakpoint at: 400642
+[0x00400642]> dr
+rax = 0x0000000b
+rbx = 0x0000000b
+rcx = 0x00000674
+rdx = 0x00000800
 r8 = 0x00000000
-r9 = 0x00000000
-r10 = 0x00000000
-r11 = 0x00000000
-r12 = 0x00000000
-r13 = 0x00000000
+r9 = 0x0000001e
+r10 = 0x00000309
+r11 = 0x7f6a78fd9720
+r12 = 0x004004c0
+r13 = 0x7ffc8d777f80
 r14 = 0x00000000
 r15 = 0x00000000
-rsi = 0x00000000
-rdi = 0x00000000
-rsp = 0x7ffe1cb0cdd0
-rbp = 0x00000000
-rip = 0x7fa278421ea0
-rflags = 0x00000200
-orax = 0x0000003b
-[0x7fa278421ea0]> dc
-Checking License: AAA-WRONG_KEY
-hit breakpoint at: 400649
-[0x00400649]> dr
-rax = 0x0000000d
-rbx = 0x0000000d
-rcx = 0x00000003
-rdx = 0x7ffe1cb0e783
-r8 = 0x7ffe1cb0e783
-r9 = 0x00000020
-r10 = 0x00000319
-r11 = 0x7fa2781bf8c0
-r12 = 0x004004d0
-r13 = 0x7ffe1cb0cdd0
-r14 = 0x00000000
-r15 = 0x00000000
-rsi = 0x00000000
-rdi = 0x7ffe1cb0e783
-rsp = 0x7ffe1cb0ccc0
-rbp = 0x7ffe1cb0ccf0
-rip = 0x00400649
-rflags = 0x00000202
+rsi = 0x00000001
+rdi = 0x7ffc8d778674
+rsp = 0x7ffc8d777e70
+rbp = 0x7ffc8d777ea0
+rip = 0x00400642
+rflags = 0x00000287
 orax = 0xffffffffffffffff
-[0x00400649]> dr rip=0x0040064b
-0x00400649 ->0x0040064b
-[0x00400649]> dc
+[0x00400642]> dr rip=0x00400644
+0x00400642 ->0x00400644
+[0x00400642]> dr
+rax = 0x0000000b
+rbx = 0x0000000b
+rcx = 0x00000674
+rdx = 0x00000800
+r8 = 0x00000000
+r9 = 0x0000001e
+r10 = 0x00000309
+r11 = 0x7f6a78fd9720
+r12 = 0x004004c0
+r13 = 0x7ffc8d777f80
+r14 = 0x00000000
+r15 = 0x00000000
+rsi = 0x00000001
+rdi = 0x7ffc8d778674
+rsp = 0x7ffc8d777e70
+rbp = 0x7ffc8d777ea0
+rip = 0x00400644
+rflags = 0x00000287
+orax = 0xffffffffffffffff
+[0x00400642]> dc
 Access Granted!
-[0x7fa278119fd8]>
+[0x7f6a7901a748]>
 ```
 
 - Stepping through
