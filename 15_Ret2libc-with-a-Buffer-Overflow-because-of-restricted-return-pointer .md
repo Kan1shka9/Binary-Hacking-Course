@@ -680,3 +680,12 @@ root
 ^C
 user@protostar:/opt/protostar/bin$
 ```
+
+###### References
+
+- [W^X](https://en.wikipedia.org/wiki/W%5EX)
+- [DEP](https://en.wikipedia.org/wiki/Executable_space_protection#Windows)
+- [NX bit](https://en.wikipedia.org/wiki/NX_bit)
+- [JIT spraying](https://en.wikipedia.org/wiki/JIT_spraying)
+- [Return-to-libc attack](https://en.wikipedia.org/wiki/Return-to-libc_attack)
+- [Exploiting Embedded Devices](https://www.sans.org/reading-room/whitepapers/testing/exploiting-embedded-devices-34022)
